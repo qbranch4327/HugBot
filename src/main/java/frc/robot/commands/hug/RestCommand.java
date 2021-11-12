@@ -5,12 +5,13 @@ import frc.robot.subsystems.HugSubsystem;
 
 public class RestCommand extends CommandBase {
     private final HugSubsystem hugSubsystem;
-    
+
     public RestCommand(HugSubsystem hugSubsystem) {
         this.hugSubsystem = hugSubsystem;
 
         addRequirements(hugSubsystem);
     }
+
     @Override
     public void initialize() {
         hugSubsystem.rest();

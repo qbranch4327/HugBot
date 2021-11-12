@@ -15,9 +15,7 @@ public class WalkSubsystem extends SubsystemBase {
     }
 
     private double calculateSpeed(double rawAxis) {
-        return (Math.abs(rawAxis) < 0.1d)
-            ? 0
-            : rawAxis * 0.6;
+        return (Math.abs(rawAxis) < 0.1d) ? 0 : rawAxis * 0.6;
     }
 
     public void walk() {

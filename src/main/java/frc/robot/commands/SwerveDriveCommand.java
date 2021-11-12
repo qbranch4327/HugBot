@@ -3,10 +3,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.SlewRateLimiter;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.SwerveDrivetrain;
-import frc.robot.subsystems.SwerveModuleMK3;
 
 public class SwerveDriveCommand extends CommandBase {
 
@@ -43,27 +41,20 @@ public class SwerveDriveCommand extends CommandBase {
     final var rot = -rotLimiter.calculate(controller.getX(GenericHID.Hand.kRight)) * SwerveDrivetrain.kMaxAngularSpeed;
 
     boolean calibrate = controller.getBumper(GenericHID.Hand.kLeft);
-    
-    drivetrain.drive(getxSpeed(xSpeed)*0.15, getySpeed(ySpeed)*0.15, getrot(rot)*0.1, true, calibrate);
+
+    drivetrain.drive(getxSpeed(xSpeed) * 0.15, getySpeed(ySpeed) * 0.15, getrot(rot) * 0.1, true, calibrate);
   }
- 
+
   private double getySpeed(double ySpeed) {
-    return Math.abs(ySpeed) > .1
-      ? ySpeed
-      : 0d;
+    return Math.abs(ySpeed) > .1 ? ySpeed : 0d;
   }
 
   private double getxSpeed(double xSpeed) {
-    return Math.abs(xSpeed) > .1
-      ? xSpeed
-      : 0d;
+    return Math.abs(xSpeed) > .1 ? xSpeed : 0d;
   }
 
   private double getrot(double rot) {
-    return Math.abs(rot) > .2
-      ? rot
-      : 0d;
+    return Math.abs(rot) > .2 ? rot : 0d;
   }
 
-  }
-
+}
