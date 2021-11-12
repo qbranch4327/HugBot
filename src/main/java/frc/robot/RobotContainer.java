@@ -32,11 +32,11 @@ public class RobotContainer {
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer(VictorSP hugController, VictorSP walkController) {
-    drivetrain.setDefaultCommand(new SwerveDriveCommand(drivetrain, controller));
     hugSubsystem = new HugSubsystem(hugController);
     walkSubsystem = new WalkSubsystem(controller, walkController);
 
     walkSubsystem.setDefaultCommand(new WalkCommand(walkSubsystem));
+    drivetrain.setDefaultCommand(new SwerveDriveCommand(drivetrain, controller));
 
     Button hugButton = new JoystickButton(controller, XboxController.Button.kA.value);
     hugButton

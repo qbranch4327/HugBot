@@ -4,21 +4,21 @@ import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class HugSubsystem extends SubsystemBase {
-    private final VictorSP hugController;
+    private final VictorSP hugMotor;
 
-    public HugSubsystem(VictorSP hugController) {
-        this.hugController = hugController;
+    public HugSubsystem(VictorSP hugMotor) {
+        this.hugMotor = hugMotor;
     }
 
     public void hug() {
-        hugController.set(-0.5d);
+        hugMotor.set(-0.5d);
     }
 
     public void release() {
-        hugController.set(0.2d);
+        hugMotor.set(0.2d);
     }
 
     public void rest() {
-        hugController.set(0);
+        hugMotor.set(0);
     }
 }

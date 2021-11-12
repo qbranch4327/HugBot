@@ -58,7 +58,6 @@ public class SwerveDrivetrain extends SubsystemBase {
       new Translation2d(Units.inchesToMeters(-10), Units.inchesToMeters(-10)));
 
   private SwerveModuleMK3[] modules = new SwerveModuleMK3[] {
-
       new SwerveModuleMK3(new TalonFX(frontLeftDriveId), new TalonFX(frontLeftSteerId),
           new CANCoder(frontLeftCANCoderId), Rotation2d.fromDegrees(frontLeftOffset)), // Front Left
       new SwerveModuleMK3(new TalonFX(frontRightDriveId), new TalonFX(frontRightSteerId),
@@ -95,7 +94,7 @@ public class SwerveDrivetrain extends SubsystemBase {
         : new ChassisSpeeds(xSpeed, ySpeed, rot));
 
     SwerveDriveKinematics.normalizeWheelSpeeds(states, kMaxSpeed);
-    
+
     for (int i = 0; i < states.length; i++) {
       SwerveModuleMK3 module = modules[i];
       SwerveModuleState state = states[i];

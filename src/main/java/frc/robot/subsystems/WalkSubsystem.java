@@ -6,12 +6,12 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class WalkSubsystem extends SubsystemBase {
     private final XboxController controller;
-    private final VictorSP walkController;
+    private final VictorSP walkMotor;
     private final int LeftY = XboxController.Axis.kLeftY.value;
 
-    public WalkSubsystem(XboxController controller, VictorSP walkController) {
+    public WalkSubsystem(XboxController controller, VictorSP walkMotor) {
         this.controller = controller;
-        this.walkController = walkController;
+        this.walkMotor = walkMotor;
     }
 
     private double calculateSpeed(double rawAxis) {
@@ -20,6 +20,6 @@ public class WalkSubsystem extends SubsystemBase {
 
     public void walk() {
         double speed = calculateSpeed(controller.getRawAxis(LeftY));
-        walkController.set(speed);
+        walkMotor.set(speed);
     }
 }
