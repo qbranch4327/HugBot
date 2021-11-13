@@ -32,21 +32,22 @@ public class RobotContainer {
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer(VictorSP hugController, VictorSP walkController) {
-    hugSubsystem = null;
+    // Repair these subsystems!
+    hugSubsystem = new HugSubsystem(hugController);
     walkSubsystem = null;
 
-    walkSubsystem.setDefaultCommand(null);
+    walkSubsystem.setDefaultCommand(new WalkCommand(walkSubsystem));
     drivetrain.setDefaultCommand(new SwerveDriveCommand(drivetrain, controller));
 
     Button hugButton = new JoystickButton(controller, XboxController.Button.kA.value);
     hugButton
-      .whenPressed(null)
-      .whenReleased(null);
+      .whenPressed(new HugCommand(hugSubsystem))
+      .whenReleased(new RestCommand(hugSubsystem));
 
     Button releaseButton = new JoystickButton(controller, XboxController.Button.kY.value);
     releaseButton
-        .whenPressed(null)
-        .whenReleased(null);
+        .whenPressed(new ReleaseCommand(hugSubsystem))
+        .whenReleased(new RestCommand(hugSubsystem));
 
     SendableRegistry.setSubsystem(hugController, "HugSubsystem");
     SendableRegistry.setSubsystem(walkController, "WalkSubsystem");
